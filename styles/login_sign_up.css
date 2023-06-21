@@ -1,0 +1,429 @@
+.login-section {
+    height: 100vh;
+}
+
+.login-header {
+    display: flex;
+    justify-content: end;
+    padding-top: 80px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.join-logo {
+    width: 110px;
+    padding-left: 20px;
+}
+
+.sign-up-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 315px;
+    height: 35px;
+    padding-right: 50px;
+}
+
+.sign-up-header span {
+    font-size: 20px;
+}
+
+.sign-up-header button {
+    border: 0;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: rgb(42, 54, 71);
+    color: white;
+    transition: 100ms ease-in-out;
+    cursor: pointer;
+}
+
+.sign-up-header button:hover {
+    background-color: rgb(41, 171, 226);
+    -webkit-box-shadow: 0px 10px 9px -3px #979797;
+    box-shadow: 0px 5px 9px -3px #979797;
+}
+
+/**********************************************************************/
+
+/*LOGIN MAIN*/
+.log-in-main {
+    display: flex;
+    justify-content: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 173px;
+}
+
+.login-email {
+    margin-top: 11px;
+}
+
+.login-password {
+    margin-bottom: 19px;
+}
+
+
+.log-in {
+    margin-top: 10em;
+    width: 600px;
+    height: 485px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    -webkit-box-shadow: 0px 0px 12px 1px rgba(151, 151, 151, 0.64);
+    box-shadow: 0px 0px 12px 1px rgb(151 151 151 / 20%);
+}
+
+.log-in-title {
+    margin-top: 25px;
+    font-size: 55px;
+    font-weight: 700;
+}
+
+.sign-up-title {
+    margin-top: -30px;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.log-in-border {
+    background-color: rgb(41, 171, 226);
+    margin-top: 15px;
+    margin-bottom: 20px;
+    min-height: 3px;
+    width: 130px;
+    border-radius: 16px;
+}
+
+.input-field {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(209, 209, 209);
+    height: 50px;
+    border-radius: 10px;
+    transition: 100ms ease-in-out;
+    cursor: text;
+}
+
+input:focus {
+    outline: none;
+}
+
+.input-field:focus-within {
+    border: 1px solid rgb(119, 119, 119);
+}
+
+.input-field input {
+    width: 81%;
+    height: 75%;
+    border: 0;
+    font-size: 20px;
+    border-radius: 10px;
+    padding-left: 10px;
+    margin-left: -10px;
+    margin-right: 15px;
+}
+
+.input-field input::placeholder {
+    width: 90%;
+    border: 0;
+    color: rgb(209, 209, 209);
+    font-size: 20px;
+}
+
+.email {
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.options {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.remember-me-option {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.checkbox {
+    margin-right: 10px;
+}
+
+.forgot-pw-option {
+    margin-left: 20px;
+}
+
+.forgot-pw-option a {
+    text-decoration: none;
+    color: rgb(68, 182, 230);
+}
+
+.log-in-buttons {
+    width: 54%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 33px;
+}
+
+.log-in-buttons button {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 18px;
+    height: 50px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.log-in-btn {
+    width: 130px;
+}
+
+.password-lock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18px;
+    height: 21px;
+    background-size: cover;
+    background-position: center;
+    transition: ease-in-out 125ms;
+}
+
+.hide-password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/show_password.svg);
+    width: 19px;
+    height: 15px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+.show-password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/hide_password.svg);
+    width: 19px;
+    height: 15px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+.sign-up-bottom {
+    display: none;
+}
+
+/*SIGN UP MAIN*/
+
+.sign-up-height {
+    height: 485px;
+    margin-top: 195px;
+}
+
+.sign-up-btn {
+    border: 0;
+    width: 120px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: rgb(42, 54, 71);
+    color: white;
+    transition: 100ms ease-in-out;
+    cursor: pointer;
+}
+
+.user-img {
+    width: 19px;
+    height: 19px;
+}
+
+.user {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.back-btn {
+    width: 100%;
+}
+
+.back-btn img {
+    margin-top: 35px;
+    margin-left: 35px;
+    cursor: pointer;
+}
+
+.form-sign-up {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-message-sign-up {
+    width: 70%;
+}
+
+.error-message-sign-up label {
+    font-size: 10px;
+    color: red;
+    margin-top: -28px;
+    margin-left: 6px;
+}
+
+.error-message-login {
+    width: 70%;
+}
+
+.error-message-login label {
+    font-size: 10px;
+    color: red;
+    margin-top: -18px;
+    margin-left: 10px;
+}
+
+.error-message-login-password {
+    width: 70%;
+}
+
+.error-message-login-password label {
+    font-size: 10px;
+    color: red;
+    margin-top: -17px;
+    margin-left: 10px;
+}
+
+.forgt-my-pw-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -75em;
+}
+
+.forgot-my-pw-container {
+    margin-top: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+    width: 826px;
+    height: 462px;
+}
+
+.forgot-my-pw-container h1 {
+    margin-top: -25px;
+    margin-bottom: 30px;
+}
+
+.forgot-border {
+    margin-top: -10px;
+}
+
+.forgot-my-pw-container span {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.forgot-my-pw-input {
+    margin-top: 35px;
+    width: 50%;
+}
+
+.send-email-btn {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.send-email-btn span {
+    margin: 0;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+/*LOGO ANIMATION*/
+.white-background {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(246, 247, 248);
+    position: fixed;
+    top: 0;
+}
+
+.animate-white-background {
+    animation: hideBackground 0.8s 0.2s forwards;
+}
+
+@keyframes fromCenterToCurrentPosition {
+    from {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        width: 300px;
+    }
+
+    to {
+        transform: translateX(0);
+        top: 0;
+        left: 0;
+        width: 110px;
+    }
+}
+
+.join-logo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: auto;
+    animation: fromCenterToCurrentPosition 0.8s 0.2s forwards;
+    padding-left: 60px;
+    padding-top: 80px;
+}
+
+@keyframes hideBackground {
+    0% {
+        opacity: 1;
+        z-index: 0;
+    }
+
+    99% {
+        opacity: 0.01;
+        z-index: 0;
+    }
+
+    100% {
+        opacity: 0;
+        z-index: -1;
+    }
+}

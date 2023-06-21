@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+    <!--Favicon-->
+    <link rel="icon" type="img/png" href="img/join_logo.svg">
+    <script src="javascript/script.js"></script>
+    <script src="javascript/board_overlays.js"></script>
+    <script src="javascript/board.js"></script>
+    <script src="javascript/dragdrop.js"></script>
+    <script src="javascript/edit_task.js"></script>
+    <script src="templates/html_templates_add_tasks.js"></script>
+    <script src="templates/html_templates_board.js"></script>
+    <script src="javascript/add_tasks.js"></script>
+    <script src="javascript/create_valid_tasks.js"></script>
+    <script src="javascript/mini_backend.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/contacts.css">
+    <link rel="stylesheet" href="styles/board.css">
+    <link rel="stylesheet" href="styles/board_responsive.css">
+    <link rel="stylesheet" href="styles/scrollbar.css">
+    <link rel="stylesheet" href="styles/add_task.css">
+    <link rel="stylesheet" href="styles/mobile_menu.css">
+
+    <link rel="stylesheet" href="styles/menu.css">
+
+</head>
+
+<body id="bodyBordId" onload="init(2), loadAllDataForTheBord()" onresize=" checkWindowInnerScreenForDragAndDrog(),
+    clearInputSearchingByResize()">
+    <div class="join-headline">
+        <img class="headline-logo" src="img/join_logo.svg">
+        <div class="join-title">
+            <p>Kanban Project Management Tool</p>
+        </div>
+        <div class="profile-section">
+            <img class="legal-notice-icon-header" src="img/legal_notice_icon.svg"
+                onclick="window.location.href='legal_notice.html'">
+            <img class="question-mark" src="img/question_mark.svg" onclick="window.location.href='help.html'">
+            <div class="profile" id="userinitials" onclick="toggleLogOutDropDown(event)">
+                <span id="userInitials"></span>
+            </div>
+        </div>
+        <div class="drop-down-logout d-none" id="dropdownlogout" onclick="window.location.href = 'login_sign_up.html'">
+            <span>Log out</span>
+        </div>
+    </div>
+    <div class="join-menu" id="joinmenu">
+        <img src="img/join_logo_menu.svg" class="join-logo-menu" alt="" onclick="window.location.href = 'summary.html'">
+        <div class="menu" id="joinmenuselection">
+            <div class="menu-icon-text" onclick="window.location.href='summary.html'" id="1">
+                <div class="icon">
+                    <img src="img/summary_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Summary</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='board.html'" id="2">
+                <div class="icon">
+                    <img src="img/board_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Board</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='add_task.html'" id="3">
+                <div class="icon">
+                    <img src="img/add_task_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Add Task</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='contacts.html'" id="4">
+                <div class="icon">
+                    <img src="img/contacts_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Contacts</p>
+                </div>
+            </div>
+        </div>
+        <div class="legal-notice" id="legalnotice">
+            <div class="menu-icon-text" onclick="window.location.href = 'legal_notice.html'" id="5">
+                <div class="icon legal-notice-icon">
+                    <img src="img/legal_notice_icon.svg" alt="" class="contacts-icon">
+                </div>
+                <div class="text">
+                    <p>Legal notice</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menuId" class="mobile-menu ">
+        <a id="mobile-buttonId1" href="summary.html">
+            <img src="img/summary_icon.svg" alt="">
+            <span>Summary</span>
+        </a>
+        <a id="mobile-buttonId2" href="board.html">
+            <img src="img/board_icon.svg" alt="">
+            <span>Board</span>
+        </a>
+        <a id="mobile-buttonId3" href="add_task.html">
+            <img src="img/add_task_icon.svg" alt="">
+            <span>Add Task</span>
+        </a>
+        <a id="mobile-buttonId4" href="contacts.html">
+            <img src="img/contacts_icon.svg" alt="">
+            <span>Contacts</span>
+        </a>
+    </div>
+
+    <div class="main-container">
+        <div class="headline-container">
+            <h1>Board</h1>
+            <div class="headline-right">
+                <div id="search-input-desktopviewId" class="input-field-search-on-board">
+                    <input id="input-searchingId1" type="text" placeholder="Find Task"
+                        onkeyup="filterTasksBySearching(1)">
+                    <img src="img/search-logo.svg" alt="">
+                </div>
+                <button onclick="openAddTaskDialogBord(), setStatusByOnclick('toDo')" class="dark-btn add-task-button">
+                    <p>Add task</p>
+                    <div class="plus-icon">
+                        <img src="img/plus.svg" alt="">
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="headline-mobile-searching">
+            <div class="input-field-search-on-board "> <!-- search Input in mobile version -->
+                <input id="input-searchingId2" type="text" placeholder="Find Task" onkeyup="filterTasksBySearching(2)">
+                <img src="img/search-logo.svg" alt="">
+            </div>
+        </div>
+        <div class="tasks-maincontainer-bord">
+            <div class="bord-content-left">
+                <div class="status-container-bord" ondragover="allowDrop( event, 'toDoId')" ondrop="moveTo('toDo')"
+                    ondragleave="onDragLeave('toDoId')">
+                    <div class=" to-do-headline-bord">
+                        <h2>To do</h2>
+                        <button onclick="openAddTaskDialogBord(), setStatusByOnclick('toDo')" class="tasks-bord-btn">
+                            <img class="tasks-bord-plus" src="img/plus.svg" alt="">
+                        </button>
+                    </div>
+                    <div class="status-container-bord-content" id="toDoId">
+                        <!-- here  renderings from status = todos -->
+                    </div>
+                    <div id="emty-div-todo" class="emty-div d-none"></div>
+                </div>
+                <div class="status-container-bord" ondragover="allowDrop(event, 'toProgressId')"
+                    ondrop="moveTo('toProgress')" ondragleave="onDragLeave('toProgressId')">
+                    <div class="to-do-headline-bord">
+                        <h2>In progress</h2>
+                        <button onclick="openAddTaskDialogBord(), setStatusByOnclick('toProgress')"
+                            class="tasks-bord-btn">
+                            <img class="tasks-bord-plus" src="img/plus.svg" alt="">
+                        </button>
+                    </div>
+                    <div class="status-container-bord-content" id="toProgressId">
+                        <!-- here  renderings from status = inprogress -->
+                    </div>
+                    <div id="emty-div-toprogress" class="emty-div d-none"></div>
+                </div>
+            </div>
+            <div class="bord-content-right">
+                <div class="status-container-bord" ondragover="allowDrop(event, 'awaitingFeedbackId')"
+                    ondrop="moveTo('awaitingFeedback')" ondragleave="onDragLeave('awaitingFeedbackId')">
+                    <div class="to-do-headline-bord">
+                        <h2>Awaiting Feedback</h2>
+                        <button onclick="openAddTaskDialogBord(), setStatusByOnclick('awaitingFeedback')"
+                            class="tasks-bord-btn">
+                            <img class="tasks-bord-plus" src="img/plus.svg" alt="">
+                        </button>
+                    </div>
+                    <div class="status-container-bord-content" id="awaitingFeedbackId">
+                        <!-- here  renderings from status = awaitingfeedback -->
+                    </div>
+                    <div id="emty-div-awaiting" class="emty-div d-none"></div>
+                </div>
+                <div class="status-container-bord" ondragover="allowDrop(event, 'doneId')" ondrop="moveTo('done')"
+                    ondragleave="onDragLeave('doneId')">
+                    <div class="to-do-headline-bord">
+                        <h2>Done</h2>
+                        <button onclick="openAddTaskDialogBord(), setStatusByOnclick('done')" class="tasks-bord-btn">
+                            <img class="tasks-bord-plus" src="img/plus.svg" alt="">
+                        </button>
+                    </div>
+                    <div class="status-container-bord-content" id="doneId">
+                        <!-- here  renderings from status = done -->
+                    </div>
+                    <div id="emty-div-done" class="emty-div d-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- overlay + addTask Dialog -->
+    <div onclick="slideOutAddTaskDialogBord()" id="overlay-bord-addTaskId" class="overlay-dialog-center d-none">
+        <div onclick="doNotClose(event)" id="add-task-bordId"
+            class="add-task-dialog-bord dialog-design slide-in-right-add-task">
+            <div class="x-btn-div">
+                <img onclick="slideOutAddTaskDialogBord()" class="x-btn" src="img/black-x.svg">
+            </div>
+            <div class="add-task-content">
+                <div id="add-task-contentId"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- overlay + Task Overview -->
+    <div onclick="slideOutTaskOverviewDialogBoard()" id="overlay-bord-taskoverviewId"
+        class="overlay-dialog-center d-none ">
+        <div onclick="doNotClose(event)" id="taskoverview-bordId"
+            class="task-overview-bord dialog-design slide-in-right-task-overview">
+            <div class="x-btn-div">
+                <img onclick="slideOutTaskOverviewDialogBoard()" class="x-btn" src="img/black-x.svg">
+            </div>
+            <!-- by click on a Task it open a overview window -->
+            <div id="task-overviewId" class="task-overview-container">
+            </div>
+        </div>
+    </div>
+    <!-- delete Task Popup   -->
+    <div onclick="slideOutDeleteTaskPopup()" id="overlay-delete-taskId"
+        class="overlay-dialog-center overlay-shadow  d-none ">
+        <div id="delete-task-pupupId" class="delete-task-popup slide-in-right-task-overview"
+            onclick="doNotClose(event)">
+        </div>
+    </div>
+    <!-- confirmation-popup -->
+    <div class="confirmation-popup">
+        <p id="confirmationpopuptext"></p>
+    </div>
+</body>
+
+</html>

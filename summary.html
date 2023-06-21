@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+    <!--Favicon-->
+    <link rel="icon" type="img/png" href="img/join_logo.svg">
+    <script src="javascript/mini_backend.js"></script>
+    <script src="javascript/summary.js"></script>
+    <script src="javascript/login_sign_up.js"></script>
+    <script src="javascript/script.js"></script>
+    <link rel="stylesheet" href="styles/summary.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/scrollbar.css">
+    <link rel="stylesheet" href="styles/mobile_menu.css">
+    <link rel="stylesheet" href="styles/menu.css">
+
+</head>
+
+
+<body id="bodyBordId" onload="init(1), loadSummaryContent()">
+
+    <!-- include W3 - Menu/Header -->
+    <div class="join-headline">
+        <img class="headline-logo" src="img/join_logo.svg" alt="">
+        <div class="join-title">
+            <p>Kanban Project Management Tool</p>
+        </div>
+        <div class="profile-section">
+            <img class="legal-notice-icon-header" src="img/legal_notice_icon.svg"
+                onclick="window.location.href='legal_notice.html'">
+            <img class="question-mark" src="img/question_mark.svg" onclick="window.location.href='help.html'">
+            <div class="profile" id="userinitials" onclick="toggleLogOutDropDown(event)">
+                <span id="userInitials"></span>
+            </div>
+        </div>
+        <div class="drop-down-logout d-none" id="dropdownlogout" onclick="window.location.href = 'login_sign_up.html'">
+            <span>Log out</span>
+        </div>
+
+    </div>
+    <div class="join-menu" id="joinmenu">
+        <img src="img/join_logo_menu.svg" class="join-logo-menu" alt="" onclick="window.location.href = 'summary.html'">
+        <div class="menu" id="joinmenuselection">
+            <div class="menu-icon-text" onclick="window.location.href='summary.html'" id="1">
+                <div class="icon">
+                    <img src="img/summary_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Summary</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='board.html'" id="2">
+                <div class="icon">
+                    <img src="img/board_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Board</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='add_task.html'" id="3">
+                <div class="icon">
+                    <img src="img/add_task_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Add Task</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='contacts.html'" id="4">
+                <div class="icon">
+                    <img src="img/contacts_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Contacts</p>
+                </div>
+            </div>
+        </div>
+        <div class="legal-notice" id="legalnotice">
+            <div class="menu-icon-text" onclick="window.location.href = 'legal_notice.html'" id="5">
+                <div class="icon legal-notice-icon">
+                    <img src="img/legal_notice_icon.svg" alt="" class="contacts-icon">
+                </div>
+                <div class="text">
+                    <p>Legal notice</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menuId" class="mobile-menu ">
+        <a id="mobile-buttonId1" href="summary.html">
+            <img src="img/summary_icon.svg" alt="">
+            <span>Summary</span>
+        </a>
+        <a id="mobile-buttonId2" href="board.html">
+            <img src="img/board_icon.svg" alt="">
+            <span>Board</span>
+        </a>
+        <a id="mobile-buttonId3" href="add_task.html">
+            <img src="img/add_task_icon.svg" alt="">
+            <span>Add Task</span>
+        </a>
+        <a id="mobile-buttonId4" href="contacts.html">
+            <img src="img/contacts_icon.svg" alt="">
+            <span>Contacts</span>
+        </a>
+    </div>
+
+    <div class="main-container">
+        <div class="headline">
+            <h1>Summary</h1>
+            <div class="border"></div>
+            <p>Everything in a nutshell</p>
+            <div class="border-mobile"></div>
+        </div>
+        <div class="summary-content">
+            <div class="content-left">
+                <div class="first-row">
+                    <a href="board.html" class="square-container dialog-design hover">
+                        <span id="tasksId" class="ammount"></span>
+                        <span> Tasks in Board </span>
+                    </a>
+                    <a href="board.html" class="square-container dialog-design hover">
+                        <span id="toProgressId" class="ammount"></span>
+                        <span> Tasks In Progress </span>
+                    </a>
+                    <a href="board.html" class="square-container dialog-design hover">
+                        <span id="awaitingFeedbackId" class="ammount"></span>
+                        <span>Awaiting Feedback</span>
+                    </a>
+                </div>
+                <div class="second-row">
+                    <a href="board.html" class="rectangle-container dialog-design hover">
+                        <div class="urgent">
+                            <div class="urgent-image">
+                                <img src="img/prio_urgent_white.svg" alt="">
+                            </div>
+                            <div class="urgent-text">
+                                <span id="urgentsId" class="urgent-number">1</span>
+                                <span>Urgent</span>
+                            </div>
+                        </div>
+                        <div class="border-grey">
+                        </div>
+                        <div class="date-container">
+                            <span id="upcomingDateId" class="date"></span>
+                            <span>Upcoming Deadline</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="third-row">
+                    <a href="board.html" class="rectrangle-small-container dialog-design hover">
+                        <div class="todo-image">
+                            <img src="img/edit_pen_white.svg" alt="">
+                        </div>
+                        <div class="todo-text">
+                            <span id="toDoId" class="todo-number"></span>
+                            <span>To-do</span>
+                        </div>
+                    </a>
+                    <a href="board.html" class="rectrangle-small-container dialog-design hover">
+                        <div class="todo-image">
+                            <img src="img/hook_white.svg" alt="">
+                        </div>
+                        <div class="todo-text">
+                            <span id="doneId" class="todo-number"></span>
+                            <span>Done</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="content-right">
+                <span id="greetingId" class="greeting"></span>
+                <span class="user" id="nameoflogedinuser">User Name</span>
+            </div>
+        </div>
+    </div>

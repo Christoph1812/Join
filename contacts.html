@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="javascript/script.js"></script>
+    <script src="javascript/mini_backend.js"></script>
+    <script src="templates/html_templates_contacts.js"></script>
+    <script src="javascript/validate_contacts.js"></script>
+    <script src="javascript/contacts.js"></script>
+    <script src="javascript/add_tasks.js"></script>
+    <script src="javascript/create_valid_tasks.js"></script>
+    <script src="templates/html_templates_add_tasks.js"></script>
+    <script src="javascript/edit_task.js"></script>
+    <link rel="icon" type="img/png" href="img/join_logo.svg">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/contacts.css">
+    <link rel="stylesheet" href="styles/contacts_overlay.css">
+    <link rel="stylesheet" href="styles/contacts_media.css">
+    <link rel="stylesheet" href="styles/mobile_menu.css">
+    <link rel="stylesheet" href="styles/scrollbar.css">
+    <link rel="stylesheet" href="styles/add_task.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/board.css">
+    <link rel="stylesheet" href="styles/add_task_overlay_responsive.css">
+    <link rel="stylesheet" href="styles/fonts.css">
+
+
+
+    <title>Contacts</title>
+</head>
+
+<body onload="init(4), loadContacts()" id="bodyBordId">
+    <div class="join-headline">
+        <img class="headline-logo" src="img/join_logo.svg" alt="">
+        <div class="join-title">
+            <p>Kanban Project Management Tool</p>
+        </div>
+        <div class="profile-section">
+            <img class="legal-notice-icon-header" src="img/legal_notice_icon.svg"
+                onclick="window.location.href='legal_notice.html'">
+            <img class="question-mark" src="img/question_mark.svg" onclick="window.location.href='help.html'">
+            <div class="profile" id="userinitials" onclick="toggleLogOutDropDown(event)">
+                <span id="userInitials"></span>
+            </div>
+        </div>
+        <div class="drop-down-logout d-none" id="dropdownlogout" onclick="window.location.href = 'login_sign_up.html'">
+            <span>Log out</span>
+        </div>
+    </div>
+    <div class="join-menu" id="joinmenu">
+        <img src="img/join_logo_menu.svg" class="join-logo-menu" alt="" onclick="window.location.href = 'summary.html'">
+        <div class="menu" id="joinmenuselection">
+            <div class="menu-icon-text" onclick="window.location.href='summary.html'" id="1">
+                <div class="icon">
+                    <img src="img/summary_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Summary</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='board.html'" id="2">
+                <div class="icon">
+                    <img src="img/board_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Board</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='add_task.html'" id="3">
+                <div class="icon">
+                    <img src="img/add_task_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Add Task</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='contacts.html'" id="4">
+                <div class="icon">
+                    <img src="img/contacts_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Contacts</p>
+                </div>
+            </div>
+        </div>
+        <div class="legal-notice" id="legalnotice">
+            <div class="menu-icon-text" onclick="window.location.href = 'legal_notice.html'" id="5">
+                <div class="icon legal-notice-icon">
+                    <img src="img/legal_notice_icon.svg" alt="" class="contacts-icon">
+                </div>
+                <div class="text">
+                    <p>Legal notice</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menuId" class="mobile-menu ">
+        <a id="mobile-buttonId1" href="summary.html">
+            <img src="img/summary_icon.svg" alt="">
+            <span>Summary</span>
+        </a>
+        <a id="mobile-buttonId2" href="board.html">
+            <img src="img/board_icon.svg" alt="">
+            <span>Board</span>
+        </a>
+        <a id="mobile-buttonId3" href="add_task.html">
+            <img src="img/add_task_icon.svg" alt="">
+            <span>Add Task</span>
+        </a>
+        <a id="mobile-buttonId4" href="contacts.html">
+            <img src="img/contacts_icon.svg" alt="">
+            <span>Contacts</span>
+        </a>
+    </div>
+
+    <div class="contacts-section" id="contactsection">
+        <div class="contact-list" id="contactlist"></div>
+        <div class="contact-info-section">
+            <div class="close-contact-info-section" onclick="hideContactInfo()">
+                <img src="img/black-x.svg" alt="">
+            </div>
+            <div class="contact-info-headline-section" id="contactinfoheadline">
+                <div class="contact-info-headline">
+                    <h1>Contacts</h1>
+                    <div class="border"></div>
+                    <p>Better with a team</p>
+                </div>
+            </div>
+            <div class="contact-info" id="contactinfo"></div>
+        </div>
+        <div class="dark-btn new-contact pos-fixed" onclick="newContact()" id="newcontactbtn">
+            <p>New Contact</p>
+            <img src="img/new_contact_icon.svg" alt="">
+        </div>
+        <div class="dark-btn new-contact pos-fixed-responsive" onclick="newContact()" id="newcontactbtn">
+            <img src="img/new_contact_icon.svg" alt="">
+        </div>
+    </div>
+    <!--overlay + addTask Dialog-->
+    <div onclick="slideOutAddTaskDialogBord()" id="overlay-bord-addTaskId" class="overlay-dialog-center d-none">
+        <div onclick="doNotClose(event)" id="add-task-bordId"
+            class="add-task-dialog-bord dialog-design slide-in-right-add-task">
+            <div class="x-btn-div">
+                <img onclick="slideOutAddTaskDialogBord()" class="x-btn" src="img/black-x.svg">
+            </div>
+            <div class="add-task-content">
+                <div id="add-task-contact-contentId"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--ADD CONTACT-->
+    <div class="add-new-contact-section d-none" id="newcontactformsection" onclick="closeForm()">
+        <div class="add-new-contact-container" onclick="doNotClose(event)">
+            <div class="add-new-contact-headline">
+                <div class="close-form-btn-responsive" onclick="closeForm()">
+                    <img class="close-form-btn-responsive-img" src="img/close_btn_responsive.svg" alt="">
+                </div>
+                <div class="add-new-contact-headline-height">
+                    <img src="img/join_logo_menu.svg" alt="">
+                    <h1>Add contact</h1>
+                    <p>Tasks are better with a team!</p>
+                    <div class="add-contact-border"></div>
+                </div>
+            </div>
+            <div class="add-new-contact-form-section">
+                <div class="empty-profile-picutre">
+                    <img src="img/empty_profile_picture.svg" alt="">
+                </div>
+                <div class="add-new-contact-form">
+                    <div class="close-form-btn">
+                        <img src="img/close_btn.svg" alt="" onclick="closeForm()">
+                    </div>
+                    <div>
+                        <form action="" class="input-form">
+                            <div class="input-field add-contact add-contact-responsive" onclick="focusInputField(this)">
+                                <input type="text" placeholder="Firstname Lastname" id="newContactName" required>
+                                <img src="img/person_icon.svg" alt="">
+                            </div>
+                            <div class="error-message">
+                                <label for="newContactName" id="nameError" style="display:none;"></label>
+                            </div>
+                            <div class="input-field add-contact add-contact-responsive" onclick="focusInputField(this)">
+                                <input type="email" placeholder="Email" id="newContactEmail"
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                                <img src="img/email_logo.svg" alt="">
+                            </div>
+                            <div class="error-message">
+                                <label for="newContactEmail" id="emailError" style="display:none;"></label>
+                            </div>
+                            <div class="input-field add-contact add-contact-responsive" onclick="focusInputField(this)">
+                                <input type="number" placeholder="Phone" id="newContactPhone" step="any" required>
+                                <img src="img/phone_icon.svg" alt="">
+                            </div>
+                            <div class="error-message">
+                                <label for="newContactPhone" id="phoneError" style="display:none;"></label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-buttons">
+                        <div class="transparent-btn cancel-btn" onclick="closeForm()">
+                            <p>Cancel</p>
+                            <div class="cancel-btn-img"></div>
+                        </div>
+                        <div class="dark-btn create-contact-btn" onclick="createNewContact()" type="submit">
+                            <p>Create Contact</p>
+                            <img src="img/tick_white.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------------->
+    <!--EDIT CONTACT-->
+    <div class="add-new-contact-section edit-contact-section d-none" id="editcontactformsection"
+        onclick="closeEditContactForm()">
+        <div class="add-new-contact-container edit-contact-container" onclick="doNotClose(event)">
+            <div class="add-new-contact-headline">
+                <div class="close-form-btn-responsive">
+                    <img class="close-form-btn-responsive-img" src="img/close_btn_responsive.svg" alt=""
+                        onclick="closeEditContactForm()">
+                </div>
+                <div class="add-new-contact-headline-height">
+                    <img src="img/join_logo_menu.svg" alt="">
+                    <h1>Edit Contact</h1>
+                    <p>Tasks are better with a team!</p>
+                    <div class="add-contact-border"></div>
+                </div>
+            </div>
+            <div class="add-new-contact-form-section">
+                <div class="empty-profile-picutre" id="profileofcontact">
+                    <img src="img/empty_profile_picture.svg" alt="">
+                </div>
+                <div class="add-new-contact-form">
+                    <div class="close-form-btn">
+                        <img src="img/close_btn.svg" alt="" onclick="closeEditContactForm()">
+                    </div>
+                    <div>
+                        <form action="" class="input-form">
+                            <div class="input-field add-contact add-contact-responsive" onclick="focusInputField(this)">
+                                <input type="text" placeholder="Full Name" id="editContactName" required>
+                                <img src="img/person_icon.svg" alt="">
+                            </div>
+                            <div class="error-message">
+                                <label for="editContactName" id="editNameError" style="display:none;"></label>
+                            </div>
+                            <div class="input-field add-contact add-contact-responsive" onclick="focusInputField(this)">
+                                <input type="email" placeholder="Email" id="editContactEmail"
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                                <img src="img/email_logo.svg" alt="">
+                            </div>
+                            <div class="error-message">
+                                <label for="editContactEmail" id="editEmailError" style="display:none;"></label>
+                            </div>
+                            <div class="input-field add-contact add-contact-responsive" onclick="focusInputField(this)">
+                                <input type="number" placeholder="Phone" id="editContactPhone" step="any" required>
+                                <img src="img/phone_icon.svg" alt="">
+                            </div>
+                            <div class="error-message">
+                                <label for="editContactPhone" id="editPhoneError" style="display:none;"></label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-buttons">
+                        <div class="transparent-btn cancel-btn" onclick="closeEditContactForm()">
+                            <p>Cancel</p>
+                            <div class="cancel-btn-img"></div>
+                        </div>
+                        <div class="dark-btn create-contact-btn" onclick="validateEditContact()" type="submit">
+                            <p>Save</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------------->
+    <div class="delete-popup-section d-none" id="deletenotification" onclick="closeDeletePopup()"></div>
+    <div class="confirmation-popup">
+        <p id="confirmationpopuptext"></p>
+    </div>
+</body>
+
+</html>

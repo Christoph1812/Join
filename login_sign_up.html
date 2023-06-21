@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join - Log in</title>
+    <link rel="icon" type="img/png" href="img/join_logo.svg">
+    <script src="javascript/script.js"></script>
+    <script src="javascript/mini_backend.js"></script>
+    <script src="javascript/summary.js"></script>
+    <script src="javascript/contacts.js"></script>
+    <script src="javascript/login_sign_up.js"></script>
+    <script src="templates/html_templates_login_sign_up.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/login_sign_up.css">
+    <link rel="stylesheet" href="styles/login_sign_up_media.css">
+    <link rel="stylesheet" href="styles/fonts.css">
+</head>
+
+<body onload="init(), loadUsers()">
+    <div class="white-background animate-white-background"></div>
+    <div class="login-section">
+        <div class="login-header">
+            <img src="img/join_logo.svg" alt="" class="join-logo">
+            <div class="sign-up-header" id="signupheader">
+                <span>Not a Join user?</span>
+                <button onclick="singUpForm()">Sign up</button>
+            </div>
+        </div>
+        <div class="log-in-main" id="loginmain">
+            <div class="log-in" id="login">
+                <span class="log-in-title">Log in</span>
+                <div class="log-in-border"></div>
+                <div class="login-form">
+                    <div class="input-field login-email" onclick="focusInputField(this)">
+                        <input type="email" placeholder="Email" id="loginemail" required>
+                        <img src="img/email_logo.svg" alt="">
+                    </div>
+                    <div class="error-message-login">
+                        <label for="loginemail" id="emailError" style="display:none;"></label>
+                    </div>
+                    <div class="input-field login-password" onclick="focusInputField(this)">
+                        <input type="password" placeholder="Password" id="loginpassword"
+                            oninput="showLock('loginpassword', 'loginpasswordlock')" required>
+                        <div class="password-lock" id="loginpasswordlock">
+                            <img id="lock" src="img/lock_logo.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="error-message-login-password">
+                    <label for="loginpassword" id="passwordError" style="display:none;"></label>
+                </div>
+                <div class="options">
+                    <div class="remember-me-option">
+                        <input type="checkbox" id="myCheckbox" name="myCheckbox" value="on" class="checkbox">
+                        <span>Remember me</span>
+                    </div>
+                    <div class="forgot-pw-option" onclick="forgotMyPw()">
+                        <a href="#">Forgot my password</a>
+                    </div>
+                </div>
+                <div class="log-in-buttons">
+                    <button id="login-button" class="dark-btn log-in-btn" onclick="validateLogin()">Log in</button>
+                    <button class="transparent-btn guest-log-in-btn"
+                        onclick="logInAsGuest(); window.location.href='summary.html'">Guest Log in</button>
+                </div>
+            </div>
+        </div>
+        <div class="sign-up-bottom-section" id="signupbottomsection">
+            <div class="sign-up-bottom">
+                <span>Not a Join user?</span>
+                <button onclick="singUpForm()">Sign up</button>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <div class="confirmation-popup">
+        <p id="confirmationpopuptext"></p>
+    </div>
+    <div class="forgt-my-pw-section d-none" id="forgotmypw">
+        <div class="forgot-my-pw-container">
+            <div class="back-btn" onclick="goBackToMainLogin()">
+                <img src="img/back_btn.svg" alt="" onclick="goBackToLogIn()">
+            </div>
+            <h1>I forgot my password</h1>
+            <div class="log-in-border forgot-border"></div>
+            <span id="confirmationpopuptext">Don't worry, we won't be sending you an email with instructions to reset
+                your password, because this is just a project.</span>
+            <div class="input-field forgot-my-pw-input" onclick="focusInputField(this)">
+                <input type="email" placeholder="Email">
+                <img src="img/email_logo.svg" alt="">
+            </div>
+            <div class="dark-btn send-email-btn" onclick="goBackToMainLogin()">
+                <span>Don't send me the email</span>
+            </div>
+        </div>
+    </div>
+    <script src="javascript/login_sign_up_eventlistener.js"></script>
+</body>
+
+</html>

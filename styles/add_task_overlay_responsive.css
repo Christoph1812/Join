@@ -1,0 +1,101 @@
+@media(max-width: 1200px) {
+
+    .add-task-button {
+        width: 50px !important;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .add-task-button p {
+        display: none;
+    }
+
+    .plus-icon {
+        margin: 0;
+    }
+
+    .add-task-dialog-bord {
+        overflow-y: auto;
+        width: auto;
+        max-height: 100vh;
+        min-height: 835px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .add-task-dialog-bord::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: 5px;
+        margin-bottom: 70px;
+        margin-top: 70px;
+    }
+
+    .task-headline {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 47px;
+    }
+
+    .x-btn-div {
+        margin: 0;
+        position: absolute;
+        top: 40px;
+        right: 20px;
+        z-index: 999;
+    }
+
+    .x-btn-div img {
+        height: 21px;
+    }
+
+    .add-task-content {
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .add-task-content label {
+        font-size: 16px;
+    }
+
+    .add-task-buttons {
+        margin-bottom: 20px;
+    }
+
+    .subtasks-container {
+        max-height: max-content;
+        overflow-y: unset;
+        margin-bottom: 15px;
+    }
+
+}
+
+@media(max-width: 600px) {
+
+    .add-task-dialog-bord {
+        background-color: #F6F7F8 !important;
+        overflow-y: scroll;
+        margin-top: 105px;
+        width: 100%;
+        height: calc(100% - 80px);
+        max-height: max-content;
+        min-height: max-content;
+        z-index: 990;
+        border-radius: 0px !important;
+    }
+
+    .overlay-dialog-center {
+        background-color: transparent !important;
+    }
+
+    .add-task-content {
+        height: max-content !important;
+        align-items: flex-start !important;
+    }
+
+    h1 {
+        font-size: 47px !important;
+    }
+}

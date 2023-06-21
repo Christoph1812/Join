@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+    <link rel="icon" type="img/png" href="img/join_logo.svg">
+    <script src="javascript/script.js"></script>
+    <script src="javascript/mini_backend.js"></script>
+    <script src="javascript/summary.js"></script>
+    <script src="javascript/contacts.js"></script>
+    <script src="javascript/login_sign_up.js"></script>
+    <link rel="stylesheet" href="styles/scrollbar.css">
+    <link rel="stylesheet" href="styles/help.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/mobile_menu.css">
+</head>
+
+<body onload="init(0)">
+    <div class="join-headline">
+        <img class="headline-logo" src="img/join_logo.svg" alt="">
+        <div class="join-title">
+            <p>Kanban Project Management Tool</p>
+        </div>
+        <div class="profile-section">
+            <img class="legal-notice-icon-header" src="img/legal_notice_icon.svg"
+                onclick="window.location.href='legal_notice.html'">
+            <img class="question-mark" src="img/question_mark.svg" onclick="window.location.href='help.html'">
+            <div class="profile" id="userinitials" onclick="toggleLogOutDropDown(event)">
+                <span id="userInitials"></span>
+            </div>
+        </div>
+        <div class="drop-down-logout d-none" id="dropdownlogout" onclick="window.location.href = 'login_sign_up.html'">
+            <span>Log out</span>
+        </div>
+    </div>
+    <div class="join-menu" id="joinmenu">
+        <img src="img/join_logo_menu.svg" class="join-logo-menu" alt="" onclick="window.location.href = 'summary.html'">
+        <div class="menu" id="joinmenuselection">
+            <div class="menu-icon-text" onclick="window.location.href='summary.html'" id="1">
+                <div class="icon">
+                    <img src="img/summary_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Summary</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='board.html'" id="2">
+                <div class="icon">
+                    <img src="img/board_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Board</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='add_task.html'" id="3">
+                <div class="icon">
+                    <img src="img/add_task_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Add Task</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='contacts.html'" id="4">
+                <div class="icon">
+                    <img src="img/contacts_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Contacts</p>
+                </div>
+            </div>
+        </div>
+        <div class="legal-notice" id="legalnotice">
+            <div class="menu-icon-text" onclick="window.location.href = 'legal_notice.html'" id="5">
+                <div class="icon legal-notice-icon">
+                    <img src="img/legal_notice_icon.svg" alt="" class="contacts-icon">
+                </div>
+                <div class="text">
+                    <p>Legal notice</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menuId" class="mobile-menu ">
+        <a id="mobile-buttonId1" href="summary.html">
+            <img src="img/summary_icon.svg" alt="">
+            <span>Summary</span>
+        </a>
+        <a id="mobile-buttonId2" href="board.html">
+            <img src="img/board_icon.svg" alt="">
+            <span>Board</span>
+        </a>
+        <a id="mobile-buttonId3" href="add_task.html">
+            <img src="img/add_task_icon.svg" alt="">
+            <span>Add Task</span>
+        </a>
+        <a id="mobile-buttonId4" href="contacts.html">
+            <img src="img/contacts_icon.svg" alt="">
+            <span>Contacts</span>
+        </a>
+    </div>
+
+    <div class="main-container">
+        <div class="help-container">
+            <h1>Help</h1>
+            <h2>What is Join?</h2>
+            <span>join is an agile project management tool that allows you to visualize your tasks, limit ongoing tasks
+                and
+                increase efficiency or optimize workflow. It can help Agile and DevOps teams to structure their daily
+                work.</span>
+            <h2>Summary</h2>
+            <span>Under the menu item summary you have an overview of all tasks and their status. You can also see which
+                tasks
+                are still to be processed and which are completed. By clicking on any button you can go directly to the
+                board.</span>
+            <h2>Board</h2>
+            <span>Under the menu item Board you also have an overview of all tasks and their status. The tasks are
+                displayed
+                in cards and can be assigned to the corresponding status by drag and drop. By clicking on a card, the
+                task
+                is opened in an overlay and can be edited from there by clicking on the pen button. There is also a
+                search
+                function, with this can be searched for any task. Finally we have the Add Task button, which opens an
+                overlay. In this overlay a task can be created in the booard.
+            </span>
+            <h2>Add Task</h2>
+            <span>Under the menu item Add Task you will find a form for creating tasks. There you can enter the title
+                and
+                description of the task. With the first toggle menu you can add predefined categories or create new
+                categories. With the second toggle menu you can add contacts to the task or add a new one under invite
+                Contacts. Next we have an input field where the due date can be selected from a calendar. This is
+                followed
+                by three buttons to select the priority. Finally, you can add subtasks to the form. At the end, there
+                are
+                two more buttons. The Clear button ensures that the form is completely emptied. With the Create Task
+                button,
+                a new task is created and forwarded directly to board.
+            </span>
+            <h2>Contacts</h2>
+            <span>Under the Contacts menu item there is a contact book. On the right side there are the contacts that
+                can be
+                viewed by scrolling. By clicking on one of these contacts, it is displayed in large size on the right
+                side,
+                which opens more functions. There you can add a task, edit your contact or solve it. This menu item also
+                offers the possibility to add a new contact by clicking on the New Contact button.
+            </span>
+        </div>
+
+
+
+
+    </div>
+
+
+
+</body>
+
+</html>
